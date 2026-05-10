@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.example.lr9.common;
+
+option java_package = "com.example.lr9.common";
+option java_outer_classname = "MessageProtos";
+
+message ChatMessage {
+  string type = 1;
+  string sender = 2;
+  string receiver = 3;
+  string content = 4;
+  int64 timestamp = 5;
+}

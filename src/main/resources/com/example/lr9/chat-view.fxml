@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.lr9.ChatController">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Панель настроек -->
+    <VBox style="-fx-border-color: #ddd; -fx-border-width: 1; -fx-border-radius: 5;">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Уровень защиты -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🛡️ УРОВЕНЬ ЗАЩИТЫ:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                <ComboBox fx:id="protectionLevelBox" prefWidth="80" style="-fx-font-size: 14px;"/>
+                <Label text="→"/>
+                <TextField fx:id="modeDesc" editable="false" prefWidth="400"
+                           style="-fx-background-color: #f0f0f0; -fx-font-size: 12px;"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Подключение к серверу -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🌐 СЕРВЕР:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="serverField" text="localhost" prefWidth="120"/>
+                <Label text="ПОРТ:"/>
+                <TextField fx:id="portField" text="8888" prefWidth="70"/>
+                <Button text="🔌 ПОДКЛЮЧИТЬСЯ" onAction="#onConnect"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="❌ ОТКЛЮЧИТЬСЯ" onAction="#onDisconnect"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- Регистрация -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="👤 ИМЯ ПОЛЬЗОВАТЕЛЯ:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="usernameField" prefWidth="150" promptText="Введите ваше имя"/>
+                <Button text="📝 ЗАРЕГИСТРИРОВАТЬСЯ" onAction="#onRegister"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Статус -->
+            <HBox>
+                <Label fx:id="statusLabel" text="⛔ Не подключен" textFill="red" style="-fx-font-size: 12px;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <!-- Область чата -->
+    <TextArea fx:id="chatArea" editable="false" prefHeight="380"
+              style="-fx-font-family: monospace; -fx-font-size: 12px;"/>
+
+    <!-- Нижняя панель отправки -->
+    <VBox spacing="10">
+        <HBox spacing="10">
+            <Label text="КОМУ:" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="targetUserBox" prefWidth="150" editable="true" promptText="Имя получателя"/>
+            <TextField fx:id="messageField" prefWidth="380" promptText="Введите ваше анонимное сообщение..."/>
+            <Button text="💌 ОТПРАВИТЬ" onAction="#onSend"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="📬 ПОЛУЧИТЬ" onAction="#onInbox"
+                    style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+
+</VBox>
